@@ -849,6 +849,7 @@ MonoBehaviour:
   ro_speed: 180
   walking: 0
   playerTrans: {fileID: 845995149}
+  threshold: -2
 --- !u!1001 &858649197
 PrefabInstance:
   m_ObjectHideFlags: 0

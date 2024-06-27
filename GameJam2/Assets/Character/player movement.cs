@@ -8,8 +8,10 @@ public class playermovement : MonoBehaviour
     public Rigidbody playerRigid;
     public float w_speed, j_height, ro_speed;
     public bool walking;
+    //public bool landed = true;
     public Transform playerTrans;
     // Start is called before the first frame update
+    public float threshold;
     void Start()
     {
         
@@ -20,7 +22,10 @@ public class playermovement : MonoBehaviour
         {
             playerTrans.position += transform.forward * w_speed * Time.deltaTime;
         }
-       
+        /*if (Input.GetKey(KeyCode.C))
+        {
+            playerTrans.position += transform.forward * w_speed * Time.deltaTime;
+        }*/
     }
 
         // Update is called once per frame
@@ -41,7 +46,16 @@ public class playermovement : MonoBehaviour
             walking = false;
 
         }
+        /*if (landed) {
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                playerAnim.SetTrigger("jump");
+                playerAnim.ResetTrigger("idle");
+                landed = false;
 
+            }
+        }
+        */
 
         if (Input.GetKey(KeyCode.A))
             {
@@ -50,6 +64,13 @@ public class playermovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             playerTrans.Rotate(0, ro_speed * Time.deltaTime, 0);
+        }
+    }
+    void FixedUpdate()
+    {
+        if (transform.position.y < threshold)
+        {
+            transform.position = new Vector3(-32.533f, 3.101f, -15.987f);
         }
     }
 }
