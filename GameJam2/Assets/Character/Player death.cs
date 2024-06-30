@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Playerdeath : MonoBehaviour
 {
-    public float threshold;
+    public GameObject respawnPoint;
+    public GameObject player;
     // Start is called before the first frame update
-    
+
     // Update is called once per frame
-    void FixedUpdate()
+    private void OnCollisionEnter(Collision other)
     {
-        if (transform.position.y < threshold)
+        if (other.gameObject.CompareTag("Player"))
         {
-            transform.position = new Vector3(-32.533f, 3.101f, -15.987f);
+            player.transform.position = new Vector3(-32.533f, 3.101f, -15.987f);
         }
     }
    

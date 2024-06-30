@@ -6,7 +6,8 @@ public class playermovement : MonoBehaviour
 {
     public Animator playerAnim;
     public Rigidbody playerRigid;
-    public float w_speed, j_height, ro_speed;
+    public float w_speed, j_speed, ro_speed;
+    //private float y_speed;
     public bool walking;
     //public bool landed = true;
     public Transform playerTrans;
@@ -46,7 +47,19 @@ public class playermovement : MonoBehaviour
             walking = false;
 
         }
-        /*if (landed) {
+        /*
+        y_speed += Physics.gravity.y * Time.deltaTime;
+        if (Input.GetButtonDown("Jump"))
+        {
+            y_speed = j_speed;
+            playerAnim.SetTrigger("walk");
+            playerAnim.ResetTrigger("idle");
+            walking = true;
+
+        }
+        Vector3 velocity = movementDirection * magnitude;
+        velocity.y = y_speed;
+        if (landed) {
             if (Input.GetKeyDown(KeyCode.C))
             {
                 playerAnim.SetTrigger("jump");
